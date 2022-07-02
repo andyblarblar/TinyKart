@@ -1,0 +1,534 @@
+<?xml version="1.0"?>
+<robot name="tinykart">
+
+<!-- Base footprint -->
+    <link name="base_footprint"/>
+    
+<!--Chassis link and joint -->    
+    <link name="base_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.9 0.44 0.254"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.9 0.44 0.254"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="28"/>
+            <inertia
+                ixx="0.451733" ixy="0.0" ixz="0.0"
+                iyy="1.89" iyz="0.0"
+                izz="2.341733"/>
+        </inertial>
+    </link>
+    
+    <joint name="base_footprint_to_base_link" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0.225"/>
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+    </joint>
+    
+    
+<!-- Wheel links and joints -->
+    
+    <!-- Left wheel link and joint -->
+    <link name="left_front_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="2.25"/>
+            <inertia
+                ixx="0.017189" ixy="0.0" ixz="0.0"
+                iyy="0.017189" iyz="0.0"
+                izz="0.030628"/>
+        </inertial>
+    </link>
+    
+    <joint name="left_front_wheel_to_base_link" type="continuous">
+        <origin rpy="0 0 0" xyz="0.285 0.27 -0.0508"/>
+        <parent link="base_link"/>
+        <child link="left_front_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    
+    <!-- Right wheel link and joint -->
+    <link name="right_front_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="2.25"/>
+            <inertia
+                ixx="0.017189" ixy="0.0" ixz="0.0"
+                iyy="0.017189" iyz="0.0"
+                izz="0.030628"/>
+        </inertial>
+    </link>
+    
+    <joint name="right_front_wheel_to_base_link" type="continuous">
+        <origin rpy="0 0 0" xyz="0.285 -0.27 -0.0508"/>
+        <parent link="base_link"/>
+        <child link="right_front_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint> 
+    
+    <!-- Right rear wheel link and joint -->
+    <link name="right_rear_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="2.25"/>
+            <inertia
+                ixx="0.017189" ixy="0.0" ixz="0.0"
+                iyy="0.017189" iyz="0.0"
+                izz="0.030628"/>
+        </inertial>
+    </link>
+    
+    <joint name="right_rear_wheel_to_base_link" type="continuous">
+        <origin rpy="0 0 0" xyz="-0.285 -0.27 -0.0508"/>
+        <parent link="base_link"/>
+        <child link="right_rear_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    
+    
+    
+    <!-- Left rear wheel link and joint -->
+    <link name="left_rear_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="2.25"/>
+            <inertia
+                ixx="0.017189" ixy="0.0" ixz="0.0"
+                iyy="0.017189" iyz="0.0"
+                izz="0.030628"/>
+        </inertial>
+    </link>
+    
+    <joint name="left_rear_wheel_to_base_link" type="continuous">
+        <origin rpy="0 0 0" xyz="-0.285 0.27 -0.0508"/>
+        <parent link="base_link"/>
+        <child link="left_rear_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    
+    <!-- Left mid wheel link and joint -->
+    <link name="left_mid_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="2.25"/>
+            <inertia
+                ixx="0.017189" ixy="0.0" ixz="0.0"
+                iyy="0.017189" iyz="0.0"
+                izz="0.030628"/>
+        </inertial>
+    </link>
+    
+    <joint name="left_mid_wheel_to_base_link" type="continuous">
+        <origin rpy="0 0 0" xyz="0 0.27 -0.0508"/>
+        <parent link="base_link"/>
+        <child link="left_mid_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint>    
+    
+    
+    <!--Right mid wheel link and joint -->
+    <link name="right_mid_wheel">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="1.5708 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.165"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+            <mass value="2.25"/>
+            <inertia
+                ixx="0.017189" ixy="0.0" ixz="0.0"
+                iyy="0.017189" iyz="0.0"
+                izz="0.030628"/>
+        </inertial>
+    </link>
+    
+    <joint name="right_mid_wheel_to_base_link" type="continuous">
+        <origin rpy="0 0 0" xyz="0 -0.27 -0.0508"/>
+        <parent link="base_link"/>
+        <child link="right_mid_wheel"/>
+        <axis xyz="0 1 0"/>
+    </joint>    
+    
+    
+<!-- Mast links and joints -->    
+    <link name="front_mast_pillar">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.0254 0.0254 1.2954"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.0254 0.0254 1.2954"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="5.4e-05" ixy="0.0" ixz="0.0"
+                iyy="5.4e-05" iyz="0.0"
+                izz="0.000108"/>
+        </inertial>
+    </link>
+
+    <joint name="front_mast_pillar_to_base_link" type="fixed">
+        <origin rpy="0 0 0" xyz="0.1833 0 0.7747"/>
+        <parent link="base_link"/>
+        <child link="front_mast_pillar"/>
+    </joint>
+
+
+    <link name="rear_mast_pillar">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.0254 0.0254 1.2954"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.0254 0.0254 1.2954"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="5.4e-05" ixy="0.0" ixz="0.0"
+                iyy="5.4e-05" iyz="0.0"
+                izz="0.000108"/>
+        </inertial>
+    </link>
+    
+    <joint name="rear_mast_pillar_to_base_link" type="fixed">
+        <origin rpy="0 0 0" xyz="-0.223 0 0.7747"/>
+        <parent link="base_link"/>
+        <child link="rear_mast_pillar"/>
+    </joint>
+    
+    
+    <link name="mid_mast_pillar">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.4064 0.0254 0.0254"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.0254 0.0254 1.2954"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="5.4e-05" ixy="0.0" ixz="0.0"
+                iyy="0.013763" iyz="0.0"
+                izz="0.013817"/>
+        </inertial>
+    </link>
+    
+    <joint name="mid_mast_pillar_to_base_link" type="fixed">
+        <origin rpy="0 0 0" xyz="-0.012 0 0.5461"/>
+        <parent link="base_link"/>
+        <child link="mid_mast_pillar"/>
+    </joint>
+
+    
+    <link name="top_mast_pillar">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="1.016 0.0254 0.0254"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="1.016 0.0254 0.0254"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="5.4e-05" ixy="0.0" ixz="0.0"
+                iyy="0.086021" iyz="0.0"
+                izz="0.086075"/>
+        </inertial>
+    </link>
+    
+    <joint name="top_mast_pillar_to_base_link" type="fixed">
+        <origin rpy="0 0 0" xyz="-0.012 0 1.4224"/>
+        <parent link="base_link"/>
+        <child link="top_mast_pillar"/>
+    </joint>
+    
+    
+<!-- Lidar Link and joint -->
+    <link name="laser_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1524" radius="0.0762"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <cylinder length="0.1524" radius="0.0762"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="0.003387" ixy="0.0" ixz="0.0"
+                iyy="0.003387" iyz="0.0"
+                izz="0.002903"/>
+        </inertial>
+    </link>
+    
+    <joint name="laser_to_base_link" type="fixed">
+        <origin rpy="0 0 0" xyz="0.2722 0 0.3556"/>
+        <parent link="base_link"/>
+        <child link="laser_link"/>
+    </joint>
+    
+    
+<!-- Imu link, joint, and sensor component -->
+    <link name="imu_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.0254 0.0254 0.0254"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.0254 0.0254 0.0254"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1"/>
+            <inertia
+                ixx="5.4e-05" ixy="0.0" ixz="0.0"
+                iyy="5.4e-05" iyz="0.0"
+                izz="0.000108"/>
+        </inertial>
+    </link>
+    
+    <joint name="imu_link_to_base_link" type="fixed">
+        <origin rpy="0 0 0" xyz="-0.012 0 0.5588"/>
+        <parent link="base_link"/>
+        <child link="imu_link"/>
+    </joint>
+    
+    
+<!-- Camera link and joint -->    
+    <link name="camera_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.1016 0.0508 0.0508"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <box size="0.0508 0.0508 0.1016"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia
+                ixx="0.000215" ixy="0.0" ixz="0.0"
+                iyy="0.00086" iyz="0.0"
+                izz="0.001075"/>
+        </inertial>
+    </link>
+    
+    <joint name="camera_link_to_base_link" type="fixed">
+        <origin rpy="0 0.785398 0" xyz="0.3992 0 1.3716"/> <!--p may be 0.698131-->
+        <parent link="base_link"/>
+        <child link="camera_link"/>
+    </joint>
+    
+<!-- Gazebo Plugins -->
+    
+  <gazebo>
+    <plugin filename="libignition-gazebo-diff-drive-system.so"
+              name="ignition::gazebo::systems::DiffDrive">
+      <left_joint>left_front_wheel_to_base_link</left_joint>
+      <left_joint>left_rear_wheel_to_base_link</left_joint>
+      <left_joint>left_mid_wheel_to_base_link</left_joint>
+      <right_joint>right_front_wheel_to_base_link</right_joint>
+      <right_joint>right_rear_wheel_to_base_link</right_joint>
+      <right_joint>right_mid_wheel_to_base_link</right_joint>
+
+      <wheel_separation>0.45</wheel_separation>
+      <wheel_radius>0.165</wheel_radius>
+      <odom_publish_frequency>20</odom_publish_frequency>
+
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
+    </plugin>
+  </gazebo>
+    
+  <gazebo reference="laser_link">
+    <sensor type="gpu_lidar" name="laser_link">
+      <topic>lidar</topic> <!-- comes through as /lidar/points for lidar processor -->
+      <update_rate>20</update_rate>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>1024</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>32</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.261799</min_angle>
+            <max_angle>0.261799</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.08</min>
+          <max>10.0</max>
+          <resolution>0.05</resolution>
+        </range>
+      </lidar>
+      <alwaysOn>1</alwaysOn>
+      <visualize>true</visualize>
+    </sensor>
+  </gazebo>
+   
+  <gazebo reference="camera_link">
+        <sensor name="camera_link" type="rgbd_camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+          <topic>rgbd_camera</topic>
+          <enable_metrics>true</enable_metrics>
+        </sensor>
+  </gazebo>
+
+  <gazebo reference="imu_link">
+    <sensor name="navsat" type="navsat">
+        <always_on>1</always_on>
+        <update_rate>1</update_rate>
+        <topic>navsat</topic>
+    </sensor>
+    <sensor name="imu_sensor" type="imu">
+        <always_on>1</always_on>
+        <update_rate>1</update_rate>
+        <visualize>true</visualize>
+        <topic>imu</topic>
+        <enable_metrics>true</enable_metrics>
+    </sensor>
+  </gazebo>
+<!--Gets joint states from gazebo model so that they can be sent to ros2 over ign_bridge
+  <gazebo>
+    <plugin filename="libignition-gazebo-joint-state-publisher-system.so" name="ignition::gazebo::systems::JointStatePublisher"/>
+  </gazebo> -->
+</robot>
+            

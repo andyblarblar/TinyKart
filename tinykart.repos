@@ -1,9 +1,18 @@
 repositories:
     bno055:
       type: git
-      url: https://github.com/flynneva/bno055
+      url: git@github.com:/flynneva/bno055
       version: main
     robot_state_controller:
       type: git
-      url: https://github.com/iscumd/robot_state_controller.git
+      url: git@github.com:/iscumd/robot_state_controller.git
       version: ros2
+    ldlidar:
+      type: git
+      url: git@github.com:linorobot/ldlidar.git
+      version: ros2
+    waypoint_publisher:
+      type: git
+      url: git@github.com:iscumd/WayPoint_Publisher.git
+      version: gps-addition
+    
