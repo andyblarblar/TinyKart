@@ -148,4 +148,11 @@ def generate_launch_description():
         waypoint_publisher,
         robot_state_controller,
         robot_localization,
+
+        #TODO add
+        #ldlidar
+        #bno055
+        #tkio_ros2
+        #twist_to_ackermann
+        #fake_encoders
     ])
