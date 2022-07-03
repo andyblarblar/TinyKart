@@ -84,6 +84,16 @@ def generate_launch_description():
             'follow_waypoints': 'True'
         }.items(),
     )
+    
+    sensor_proc = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_tinykart_gazebo, 'launch'),
+            '/include/sensor_processor/sensor_processor.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+        }.items(),
+    )
 
     robot_state_controller = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -121,6 +131,7 @@ def generate_launch_description():
         state_publishers,
         ign_gazebo,
         joy_with_teleop_twist,
+        sensor_proc,
 
         navigation,
         rviz,

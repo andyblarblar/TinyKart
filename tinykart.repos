@@ -19,4 +19,8 @@ repositories:
       type: git
       url: git@github.com:andyblarblar/ros2_wii_wheel.git
       version: master
+    sensor_proc:
+      type: git
+      url: git@github.com:iscumd/sensor_processor.git
+      version: gazebo-sim
     
