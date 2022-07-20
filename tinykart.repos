@@ -23,4 +23,8 @@ repositories:
       type: git
       url: git@github.com:iscumd/sensor_processor.git
       version: gazebo-sim
+    ackermann_msgs:
+      type: git
+      url: git@github.com:ros-drivers/ackermann_msgs.git
+      version: ros2
     
