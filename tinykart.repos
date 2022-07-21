@@ -29,5 +29,5 @@ repositories:
       version: ros2
     twist_to_ackermann:
       type: git 
-      url: git@github.com:andyblarblar/twist_to_ackermann.git
+      url: git@github.com:iscumd/twist_to_ackermann.git
       version: master
