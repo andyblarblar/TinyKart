@@ -27,4 +27,7 @@ repositories:
       type: git
       url: git@github.com:ros-drivers/ackermann_msgs.git
       version: ros2
-    
+    twist_to_ackermann:
+      type: git 
+      url: git@github.com:andyblarblar/twist_to_ackermann.git
+      version: master
