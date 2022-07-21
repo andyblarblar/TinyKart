@@ -20,7 +20,7 @@ class TkioRos(Node):
         self.MAX_SPEED = 13.4112 #TODO double check this
 
         self.nav_sub = self.create_subscription(
-            AckermannDrive, '/nav_vel', self.nav_callback, rclpy.qos.qos_profile_system_default)
+            AckermannDrive, '/ack_vel', self.nav_callback, rclpy.qos.qos_profile_system_default)
 
         self.serial = serial.Serial('ttyUSB0', baudrate=9600)
 
