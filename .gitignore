@@ -49,3 +49,13 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+# Folders
+bno055
+robot_state_controller
+ldlidar
+waypoint_publisher
+wii_wheel
+sensor_proc
+ackermann_msgs
+twist_to_ackermann
