@@ -31,21 +31,19 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    pkg_tinykart_robot = get_package_share_directory('tinykart_robot')
-
-    robot_localization_file_path = os.path.join(pkg_tinykart_robot, 'config/robot_localization',
-                                         'ekf.yaml')
     # Launch arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
-    robot_localization = Node(
-        package='robot_localization',
-        executable='ekf_node',
-        name='ekf_filter_node',
+    lidar = Node(
+        package='ldlidar',
+        executable='ldlidar',
+        name='ldlidar',
         output='screen',
-        parameters=[robot_localization_file_path, 
-        {'use_sim_time': use_sim_time}],
-        remappings=[('/odometry/filtered', '/tinykart/odom'), ('/cmd_vel', '/nav_vel')],
+        parameters=[
+            {'use_sim_time': use_sim_time,
+             'lidar_frame': 'laser_link',
+             'topic_name': '/scan'}
+        ],
     )
 
     return LaunchDescription([
@@ -55,5 +53,5 @@ def generate_launch_description():
                               description='Use simulation clock if true'),
 
         # Nodes
-        robot_localization,
+        lidar,
     ])

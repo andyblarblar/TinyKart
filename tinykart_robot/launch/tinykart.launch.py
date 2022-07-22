@@ -31,7 +31,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch.conditions import IfCondition, UnlessCondition
 
-#TODO this file wont launch, stuff like EKF isn't done
+#TODO Launches, but still uses old URDF and some launch files have params to change
 def generate_launch_description():
     # ROS packages
     pkg_tinykart_robot = get_package_share_directory('tinykart_robot')
@@ -96,8 +96,7 @@ def generate_launch_description():
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time,
-            'follow_waypoints': True,
-            'follow_gps' : False
+            'follow_waypoints': 'True',
         }.items(),
     )
 
@@ -114,10 +113,55 @@ def generate_launch_description():
         }.items(),
     )
 
+    # Provides odom from sensor fusion
     robot_localization = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(pkg_tinykart_robot, 'launch/include/robot_localization'),
             '/localization.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+    
+    # Converts /nav_vel from nav to ackermann on /ack_vel
+    tta = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_tinykart_robot, 'launch/include/tta'),
+            '/twist_to_ackermann.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+    
+    # Takes /ack_vel and communicates with a pico to move the car
+    tkio = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_tinykart_robot, 'launch/include/tkio_ros'),
+            '/tkio.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+    
+    # LD06 Lidar scans
+    ldlidar = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_tinykart_robot, 'launch/include/ldlidar'),
+            '/ldlidar.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+    
+    # BNO055 IMU over UART
+    bno055 = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_tinykart_robot, 'launch/include/bno055'),
+            '/bno055.launch.py'
         ]),
         launch_arguments={
             'use_sim_time': use_sim_time
@@ -143,16 +187,17 @@ def generate_launch_description():
         state_publishers,
         joy_with_teleop_twist,
         
+        # Nav stuff
         navigation,
         rviz,
         waypoint_publisher,
         robot_state_controller,
         robot_localization,
 
-        #TODO add
-        #ldlidar
-        #bno055
-        #tkio_ros2
-        #twist_to_ackermann
-        #fake_encoders
+        #TODO add hardware drivers below
+        ldlidar,
+        bno055,
+        tkio,
+        tta
+        #fake_encoders (if needed)
     ])

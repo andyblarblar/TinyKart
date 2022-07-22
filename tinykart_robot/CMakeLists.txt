@@ -22,6 +22,7 @@ find_package(robot_state_publisher REQUIRED)
 find_package(joy REQUIRED)
 find_package(teleop_twist_joy REQUIRED)
 find_package(robot_state_controller REQUIRED)
+find_package(robot_localization REQUIRED)
 #TODO add every new node and the stuff in the repos file
 
 # uncomment the following section in order to fill in
