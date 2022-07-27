@@ -27,12 +27,13 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
+from launch_ros.actions import SetRemap
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 
 
 def generate_launch_description():
-    '''Launches just enough nodes to move tinykart with teleop. Requires the roboteq to be plugged in, but nothing else.'''
+    '''Launches just enough nodes to move tinykart with teleop. Requires the pico to be plugged in, but nothing else.'''
 
     # ROS packages
     pkg_tinykart_robot = get_package_share_directory('tinykart_robot')
@@ -88,6 +89,26 @@ def generate_launch_description():
         }.items(),
     )
 
+    tkio = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_tinykart_robot, 'launch/include/tkio_ros'),
+            '/tkio.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+
+    tta = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(pkg_tinykart_robot, 'launch/include/tta'),
+            '/twist_to_ackermann.launch.py'
+        ]),
+        launch_arguments={
+            'use_sim_time': use_sim_time
+        }.items(),
+    )
+
     return LaunchDescription([
         # Launch Arguments
         DeclareLaunchArgument(
@@ -103,10 +124,14 @@ def generate_launch_description():
                               default_value='true',
                               description='Open rviz if true'),
 
+        SetRemap('/nav_vel', '/cmd_vel'),
+        
         # Nodes
         state_publishers,
         joy_with_teleop_twist,
         
         rviz,
         robot_state_controller,
+        tkio,
+        tta
     ])
