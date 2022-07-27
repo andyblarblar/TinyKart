@@ -42,7 +42,7 @@ def generate_launch_description():
         parameters=[
             {'use_sim_time': use_sim_time,
              'use_stamps': False,
-             'wheelbase': 0.5}  # TODO replace with accurate
+             'wheelbase': 0.35}
         ],
     )
 
