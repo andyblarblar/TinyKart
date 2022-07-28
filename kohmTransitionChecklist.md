@@ -1,6 +1,4 @@
 TODO:
-- [ - ] tinykart_gazebo  
-- [ - ] tinykart_robot  
-- [ - ] tinykart_description  
-- [ ] actual urdf  
-- [ ] migrate topics  
+- finish URDF (imu and lidar)
+- finish non logic nav (SE2 box, gazebo plugin sizes)
+- tune nav

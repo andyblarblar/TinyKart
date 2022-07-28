@@ -31,7 +31,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch.conditions import IfCondition, UnlessCondition
 
-#TODO Launches, but still uses old URDF and some launch files have params to change
 def generate_launch_description():
     # ROS packages
     pkg_tinykart_robot = get_package_share_directory('tinykart_robot')
@@ -194,7 +193,7 @@ def generate_launch_description():
         robot_state_controller,
         robot_localization,
 
-        #TODO add hardware drivers below
+        # Hardware drivers
         ldlidar,
         bno055,
         tkio,

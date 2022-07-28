@@ -25,7 +25,7 @@ def generate_launch_description():
                 arguments=[
                     '-d',
                     os.path.join(pkg_tinykart_description, 'rviz',
-                                 'cool.rviz')
+                                 'robot.rviz')
                 ],
                 parameters=[{
                     'use_sim_time': use_sim_time
