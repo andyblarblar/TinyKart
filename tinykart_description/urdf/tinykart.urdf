@@ -20,7 +20,7 @@
         </collision>
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1"/>
+            <mass value="2"/>
             <inertia
                 ixx="0.00266963" ixy="0.0" ixz="0.0"
                 iyy="0.000315771" iyz="0.0"
@@ -217,18 +217,18 @@
     
 <!-- Sensors -->
 
-  <!-- Lidar Link and joint -->
+    <!-- Lidar Link and joint -->
     <link name="laser_link">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <cylinder length="0.1524" radius="0.0762"/>
+                <cylinder length="0.01" radius="0.00762"/>
             </geometry>
         </visual>
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <cylinder length="0.1524" radius="0.0762"/>
+                <cylinder length="0.01" radius="0.00762"/>
             </geometry>
         </collision>
         <inertial>
@@ -242,7 +242,7 @@
     </link>
     
     <joint name="laser_to_base_link" type="fixed">
-        <origin rpy="0 0 0" xyz="0.2722 0 0.3556"/>
+        <origin rpy="0 0 0" xyz="0.2722 0 0.2"/>
         <parent link="base_link"/>
         <child link="laser_link"/>
     </joint>
@@ -264,7 +264,7 @@
         </collision>
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1"/>
+            <mass value="0"/>
             <inertia
                 ixx="5.4e-05" ixy="0.0" ixz="0.0"
                 iyy="5.4e-05" iyz="0.0"
@@ -273,7 +273,7 @@
     </link>
     
     <joint name="imu_link_to_base_link" type="fixed">
-        <origin rpy="0 0 0" xyz="-0.012 0 0.5588"/>
+        <origin rpy="0 0 0" xyz="-0.012 0 0.3"/>
         <parent link="base_link"/>
         <child link="imu_link"/>
     </joint>
@@ -289,14 +289,14 @@
       <right_steering_joint>right_front_wheel_steer</right_steering_joint>
       <right_joint>right_rear_wheel_to_base_link</right_joint>
 
-      <wheel_separation>0.45</wheel_separation>
-      <wheel_radius>0.165</wheel_radius>
+      <wheel_separation>0.19</wheel_separation>
+      <wheel_radius>0.053975</wheel_radius>
       <odom_publish_frequency>20</odom_publish_frequency>
 
-      <min_velocity>-10</min_velocity>
-      <max_velocity>10</max_velocity>
-      <min_acceleration>-30</min_acceleration>
-      <max_acceleration>30</max_acceleration>
+      <min_velocity>-13</min_velocity>
+      <max_velocity>13</max_velocity>
+      <min_acceleration>-5</min_acceleration>
+      <max_acceleration>10</max_acceleration>
 
       <frame_id>odom</frame_id>
       <child_frame_id>base_footprint</child_frame_id>
