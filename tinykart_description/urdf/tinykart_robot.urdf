@@ -22,8 +22,8 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="1"/>
             <inertia
-                ixx="0.00266963" ixy="0.0" ixz="0.0"
-                iyy="0.000315771" iyz="0.0"
+                ixx="0.000315771" ixy="0.0" ixz="0.0"
+                iyy="0.00266963" iyz="0.0"
                 izz="0.0"/>
         </inertial>
     </link>
@@ -55,9 +55,9 @@
             <origin xyz="0 0 0" rpy="1.5708 0 0"/>
             <mass value="0.1"/>
             <inertia
-                ixx="0.017189" ixy="0.0" ixz="0.0"
-                iyy="0.017189" iyz="0.0"
-                izz="0.030628"/>
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
         </inertial>
     </link>
 
@@ -72,11 +72,11 @@
         </visual>
         <inertial>
             <origin xyz="0 0 0" rpy="1.5708 0 0"/>
-            <mass value="1.125"/>
+            <mass value="0.001"/>
             <inertia
-                ixx="0.017189" ixy="0.0" ixz="0.0"
-                iyy="0.017189" iyz="0.0"
-                izz="0.030628"/>
+                ixx="7.6E-07" ixy="0.0" ixz="0.0"
+                iyy="7.6E-07" iyz="0.0"
+                izz="0.000001"/>
         </inertial>
     </link>
 
@@ -111,11 +111,11 @@
         </collision>
         <inertial>
             <origin xyz="0 0 0" rpy="1.5708 0 0"/>
-            <mass value="1.125"/>
+            <mass value="0.1"/>
             <inertia
-                ixx="0.017189" ixy="0.0" ixz="0.0"
-                iyy="0.017189" iyz="0.0"
-                izz="0.030628"/>
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
         </inertial>
     </link>
 
@@ -130,11 +130,11 @@
         </visual>
         <inertial>
             <origin xyz="0 0 0" rpy="1.5708 0 0"/>
-            <mass value="1.125"/>
+            <mass value="0.001"/>
             <inertia
-                ixx="0.017189" ixy="0.0" ixz="0.0"
-                iyy="0.017189" iyz="0.0"
-                izz="0.030628"/>
+                ixx="7.6E-07" ixy="0.0" ixz="0.0"
+                iyy="7.6E-07" iyz="0.0"
+                izz="0.000001"/>
         </inertial>
     </link>
     
@@ -171,9 +171,9 @@
             <origin xyz="0 0 0" rpy="1.5708 0 0"/>
             <mass value="0.1"/>
             <inertia
-                ixx="0.017189" ixy="0.0" ixz="0.0"
-                iyy="0.017189" iyz="0.0"
-                izz="0.030628"/>
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
         </inertial>
     </link>
     
@@ -202,9 +202,9 @@
             <origin xyz="0 0 0" rpy="1.5708 0 0"/>
             <mass value="0.1"/>
             <inertia
-                ixx="0.017189" ixy="0.0" ixz="0.0"
-                iyy="0.017189" iyz="0.0"
-                izz="0.030628"/>
+                ixx="7.6E-05" ixy="0.0" ixz="0.0"
+                iyy="7.6E-05" iyz="0.0"
+                izz="0.000125"/>
         </inertial>
     </link>
     
@@ -217,32 +217,32 @@
     
 <!-- Sensors -->
 
-  <!-- Lidar Link and joint -->
+    <!-- Lidar Link and joint -->
     <link name="laser_link">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <cylinder length="0.1524" radius="0.0762"/>
+                <cylinder length="0.01" radius="0.00762"/>
             </geometry>
         </visual>
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
             <geometry>
-                <cylinder length="0.1524" radius="0.0762"/>
+                <cylinder length="0.01" radius="0.00762"/>
             </geometry>
         </collision>
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <mass value="0"/>
             <inertia
-                ixx="0.003387" ixy="0.0" ixz="0.0"
-                iyy="0.003387" iyz="0.0"
+                ixx="5.4e-05" ixy="0.0" ixz="0.0"
+                iyy="5.4e-05" iyz="0.0"
                 izz="0.002903"/>
         </inertial>
     </link>
     
     <joint name="laser_to_base_link" type="fixed">
-        <origin rpy="0 0 0" xyz="0.2722 0 0.3556"/>
+        <origin rpy="0 0 0" xyz="0.2722 0 0.2"/>
         <parent link="base_link"/>
         <child link="laser_link"/>
     </joint>
@@ -264,7 +264,7 @@
         </collision>
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0"/>
-            <mass value="1"/>
+            <mass value="0"/>
             <inertia
                 ixx="5.4e-05" ixy="0.0" ixz="0.0"
                 iyy="5.4e-05" iyz="0.0"
@@ -273,7 +273,7 @@
     </link>
     
     <joint name="imu_link_to_base_link" type="fixed">
-        <origin rpy="0 0 0" xyz="-0.012 0 0.5588"/>
+        <origin rpy="0 0 0" xyz="-0.012 0 0.3"/>
         <parent link="base_link"/>
         <child link="imu_link"/>
     </joint>
