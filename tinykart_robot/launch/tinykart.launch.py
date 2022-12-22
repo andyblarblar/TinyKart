@@ -191,6 +191,8 @@ def generate_launch_description():
         rviz,
         waypoint_publisher,
         robot_state_controller,
+
+        # Here down arn't in sim
         robot_localization,
 
         # Hardware drivers

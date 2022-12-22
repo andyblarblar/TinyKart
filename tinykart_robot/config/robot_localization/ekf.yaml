@@ -1,5 +1,3 @@
-#TODO remove realsense stuff and add new stuff
-
 ### ekf config file ###
 ekf_filter_node:
     ros__parameters:

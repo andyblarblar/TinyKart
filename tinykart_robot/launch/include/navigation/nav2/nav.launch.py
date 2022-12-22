@@ -36,7 +36,7 @@ def generate_launch_description():
         'map_subscribe_transient_local')
 
     lifecycle_nodes = [
-        'controller_server', 'planner_server', 'recoveries_server',
+        'controller_server', 'planner_server', 'behavior_server',
         'bt_navigator', 'waypoint_follower'
     ]
 
@@ -96,9 +96,9 @@ def generate_launch_description():
              output='screen',
              parameters=[configured_params],
              remappings=remappings),
-        Node(package='nav2_recoveries',
-             executable='recoveries_server',
-             name='recoveries_server',
+        Node(package='nav2_behaviors',
+             executable='behavior_server',
+             name='behavior_server',
              output='screen',
              parameters=[configured_params],
              remappings=remappings),
