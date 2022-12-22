@@ -4,6 +4,9 @@ bt_navigator:
     global_frame: map
     robot_base_frame: base_footprint
     odom_topic: /odom
+    # The following two paths will be re-written in the launch file nav.launch.py to the proper values
+    default_nav_to_pose_bt_xml: /bad/path
+    default_nav_through_poses_bt_xml: /bad/path
     bt_loop_duration: 10
     default_server_timeout: 20
     enable_groot_monitoring: True
