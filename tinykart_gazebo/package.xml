@@ -18,7 +18,7 @@
   <exec_depend>robot_state_controller</exec_depend>
   <exec_depend>slam_toolbox</exec_depend>
   <exec_depend>navigation2</exec_depend>
-  <exec_depend>nav2-bringup</exec_depend>
+  <exec_depend>nav2_bringup</exec_depend>
   <exec_depend>tinykart_description</exec_depend>
   <exec_depend>waypoint</exec_depend>
 
