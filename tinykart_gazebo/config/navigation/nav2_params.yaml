@@ -9,8 +9,6 @@ bt_navigator:
     enable_groot_monitoring: True
     groot_zmq_publisher_port: 1666
     groot_zmq_server_port: 1667
-    default_nav_through_poses_bt_xml: /home/andy/Documents/dev/tinykart/src/tinykart_gazebo/config/navigation/bt_without_spin.xml #TODO change for your machine
-    default_nav_to_pose_bt_xml: /home/andy/Documents/dev/tinykart/src/tinykart_gazebo/config/navigation/bt_without_spin.xml
     plugin_lib_names:
     - nav2_compute_path_to_pose_action_bt_node
     - nav2_compute_path_through_poses_action_bt_node
