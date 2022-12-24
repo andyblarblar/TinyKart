@@ -54,7 +54,7 @@ def generate_launch_description():
             ('/world/tinykarts_world/clock', '/clock'),
             ('/model/tinykart/tf', '/tf'),
             ('/model/tinykart/cmd_vel', '/robot/cmd_vel'),
-            ('/model/tinykart/odometry', '/odom'),
+            ('/model/tinykart/odometry', '/tinykart/odom'),
             ('/lidar', '/lidar/unfiltered_scan'),
             ('/imu', '/tinykart/imu'),
             ('/model/tinykart/joint_state', 'joint_states')
